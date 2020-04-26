@@ -1,0 +1,5 @@
+
+hash: runHash
+
+runHash: main2.cpp hash.cpp
+	g++ -std=c++11 -o prog2 main2.cpp hash.cpp
