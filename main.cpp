@@ -5,26 +5,45 @@
 #include <vector>
 #include <cstring>
 #include <algorithm>
-
+#include <sstream>
+#include <queue>
 #include "bst.h"
 
 using namespace std;
 int main(int argc, char** argv){
-
-ifstream txtfile(argv[1]);
-string line;
-
-
-if (txtfile.fail()){
-	cerr << "Cound not open file" << argv[1];
-	exit(1);
-}
-
+fstream file;
+string word, filename;
 BST data;
+filename = "small.txt";
+file.open(filename.c_str());
+while (file >>word){
 
-while(getline(txtfile,line)){
-	data.insert(line);
+data.insert2(word,false);
 }
-data.print();
-//data.rangeSearch("dev", "camphol");
-}
+/*
+    string str = "delete yi, search er, insert san";
+    queue<string> q;
+   
+  
+    stringstream ss(str); 
+  
+    while (ss.good()) { 
+        string substr; 
+        getline(ss, substr, ',');
+
+        q.push(substr); 
+    } 
+  
+*/
+data.insert("devonchi");
+data.rangeSearch("dev", "lam");
+
+return 0;}
+
+
+//while(getline(txtfile,line)){
+//	data.insert(line);
+//};
+
+//data.rangeSearchHelper(root,"dev", "camphol");
+

@@ -13,12 +13,14 @@ public:
 	BST();
 	~BST();
 	void search(string word) const;
+	void insert2(string word, bool b);
 	void insert(string word);
 	void remove(string word);
 	void print() const;
 	void rangeSearch(string a, string b)const;
 
 
+//	void  rangeSearch(Node* r, string a, string b) const;
 
 
 private:
@@ -48,7 +50,7 @@ private:
 	string getSuccessor(string value) const;
 	string getPredecessor(string value) const;
 	bool removeHelper(string value);
-	vector<string> rangeSearchHelper(Node* n, string a, string b) const;
+	void  rangeSearchHelper(Node* r, string a, string b, vector<string>& v) const;
 
 	void printInOrder(Node* n) const;
 

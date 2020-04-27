@@ -13,7 +13,7 @@ public:
 	void insert(string word);
 	void search(string word) const;
 	void remove(string word);
-	void rangeSearch(string a, string b) const;
+	//void rangeSearch(string a, string b) const;
 
 private:
 	const static size_t CAPACITY = 10000;

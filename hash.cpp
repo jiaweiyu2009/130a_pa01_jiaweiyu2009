@@ -99,7 +99,7 @@ void Table::remove(string word){
 	}
 }
 
-
+/*
 void Table::rangeSearch(string a, string b)const{
 	size_t begin = hash(a);
 	size_t end = hash(b);
@@ -111,6 +111,6 @@ void Table::rangeSearch(string a, string b)const{
 	}
 }
 
-
+*/
 
 
