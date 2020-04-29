@@ -1,4 +1,3 @@
-
 all: runEverything
 
 runEverything: main.cpp bst.cpp hash.cpp
