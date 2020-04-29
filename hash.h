@@ -11,17 +11,27 @@ public:
 	Table();
 	//~Table();
 	void insert(string word);
+	void insert2(string word, bool b);
 	void search(string word) const;
 	void remove(string word);
-	//void rangeSearch(string a, string b) const;
+	void rangeSearch(string a, string b) const;
+
 
 private:
+
 	const static size_t CAPACITY = 10000;
 	std::vector<std::pair<std::string,size_t>> table[CAPACITY];
 	size_t hash(std::string word) const;
 
 	int insertHelper(string word);
 	int searchHelper(string word) const;
+
+
+	struct myclass {
+	 	 bool operator() (string i,string j) { return (i<j);}
+	} myobject;
+
+
 };
 
 #endif

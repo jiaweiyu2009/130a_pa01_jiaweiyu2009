@@ -16,7 +16,7 @@ size_t Table::hash(std::string word) const {
 	for (size_t i = 0; i < word.size(); i++) {
 		acc += int(word[i]);
 	}
-	acc = acc* word.size() / 33;
+	acc = acc* word.size() * word.size() * acc;
 	return acc % CAPACITY;
 }
 
@@ -37,26 +37,30 @@ int Table::insertHelper(string word){
 	return 1;
 }
 
+	
+	
 void Table::insert(string word){
 	int i = insertHelper(word);
 	cout<< word << " inserted, new count = " << i <<endl;
 }
 
-int Table::searchHelper(string word) const{
-	bool found = false;
+void Table::insert2(string word, bool b){
+	if( b == false){
 
-	for (size_t i = 0; i < CAPACITY; i++){
-		for (pair<string,size_t> i : table[i])
-			if (i.first == word){
-			found = true;
-			return i.second;
-		}
+	int i = insertHelper(word);
 	}
-	
+}
 
-	if (found == false){
-		return 0;
-	}
+int Table::searchHelper(string word) const{	
+       int index = this->hash(word);
+       int j = 0;
+       for(auto i : table[index]){
+		if(i.first == word){
+		return i.second;
+		}	
+       }		
+      return 0;
+
 }
 
 void Table::search(string word) const{
@@ -65,52 +69,59 @@ void Table::search(string word) const{
 		cout << word << " not found" << endl;
 	}
 	else{
-		cout << word << "found, count = "<< i << endl;
+		cout << word << " found, count = "<< i << endl;
 	}
 }
 
 void Table::remove(string word){
 	int s = searchHelper(word);
 	if(s == 1){
-	for (size_t i = 0; i < CAPACITY; i++){
-		for(pair<string,size_t> i : table[i]){
-			if(i.first == word){
-				int index;
-				vector<pair<string,size_t>>::iterator it;
-				pair<string,size_t> p1 (i.first,1);
-				it = find(table[i].begin,table[i].end(),p1);
-				index = distance(table[i].begin(),it);
-				table[i].erase(table[i].begin() + index);
-				cout << word << " deleted\n";
-			}
+	int index = this->hash(word);
+	int j = 0;
+	for (auto i : table[index]){
+		if (i.first == word){
+		table[index].erase(table[index].begin() + j);
+		cout << word << " deleted\n";
 		}
 	}
 	}
+
 	else{
-	for(size_t i = 0; i < CAPACITY; i++){
-		for(pair<string,size_t>i : table[i]){
-			if(i.first == word){
-				i.second = i.second -1;
-				cout << word << " deleted, new count = " << i.second <<endl;
-			}
-
+	int index = this->hash(word);
+	int j = 0;
+	for(auto i : table[index]){
+		if (i.first == word){
+			pair<string, size_t> pair1(i.first,i.second - 1);
+			table[index].erase(table[index].begin() + j);
+			table[index].push_back(pair1);
+			cout << word << " deleted, new count = " << pair1.second << endl;
 		}
+		j++;
 	}
-	}
+
+}
 }
 
-/*
+
 void Table::rangeSearch(string a, string b)const{
-	size_t begin = hash(a);
-	size_t end = hash(b);
+	vector<string> v;
+	
+       int j = 0;
+      for(int index = 0 ; index < CAPACITY; index++){
+       for(auto i : table[index]){
+		if((i.first >= a) && (i.first<= b)) {
+		v.push_back(i.first);
+		}	
+       }		
+      }
 
-	for(size_t i = begin; i <= end ; i++){
-		for(pair<string,size_t> i : table[i]){
-			cout << i.first << endl;
-		}
-	}
+      std::sort(v.begin(),v.end(),myobject);
+
+      for(vector<string>::iterator it = v.begin(); it != v.end(); it++){
+	      cout << *it << endl;
+      }
 }
 
-*/
+
 
 

@@ -1,23 +1,41 @@
 #include <iostream>
-#include "hash.h"
+#include <fstream>
+#include <string>
+#include <ctime>
+#include <vector>
+#include <cstring>
+#include <algorithm>
+#include <sstream>
+#include <queue>
+#include "bst.h"
 
 using namespace std;
-
 int main(int argc, char** argv){
+fstream file;
+string word, filename;
+Table data;
+filename = "small.txt";
+file.open(filename.c_str());
+while (file >>word){
 
-ifstream txtfile(argv[1]);
-string line;
-
-
-if (txtfile.fail()){
-	cerr << "Cound not open file" << argv[1];
-	exit(1);
+data.insert2(word,false);
 }
+/*
+    string str = "delete yi, search er, insert san";
+    queue<string> q;
+   
+  
+    stringstream ss(str); 
+  
+    while (ss.good()) { 
+        string substr; 
+        getline(ss, substr, ',');
+        q.push(substr); 
+    } 
 
-Table hashtable;
+*/
 
-while(getline(txtfile,line)){
-	hashtable.insert(line);
-}
-}
+data.insert("sb");
 
+
+return 0;}
