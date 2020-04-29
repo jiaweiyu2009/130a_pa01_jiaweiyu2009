@@ -333,26 +333,18 @@ else{
 }
 
 void BST::remove(string word){
-   Node *s = getNodeFor(word,root);
-   int h = s->count;
 
-   if(h > 1){
    Node* t = getNodeFor(word, root);
    t->count -= 1;
-   cout << word << " deleted, new count = " <<  t->count <<endl;
+   if(t->count < 1){
+	   cout << word << " deleted" << endl;
+   }
+   else{
+   	   cout << word << " deleted, new count = " <<  t->count <<endl;
    }
 
  
-   if(h==1){
-	   bool r = removeHelper(word);
-	   if(r){
-		   cout << word << " deleted\n";
-	   }
-	   else{
-		   return;
-	   }
-   }
-}
+ }
 
 
 
