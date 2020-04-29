@@ -101,9 +101,9 @@ int BST::insertHelper(string word, Node *n) {
 }
 
 void BST::search(string word) const{
-Node* n = getNodeFor(word, root);
-if(n!=nullptr){
-	cout << word << " found, count = " << n->count  << "\n";
+int c = searchHelper(word,root);
+if(c > 0){
+	cout << word << " found, count = " << c  << "\n";
 }
 else{
 	cout << word << " not found\n";
