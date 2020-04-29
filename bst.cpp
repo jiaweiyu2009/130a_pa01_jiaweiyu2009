@@ -335,12 +335,14 @@ else{
 void BST::remove(string word){
 
    Node* t = getNodeFor(word, root);
-   t->count -= 1;
-   if(t->count < 1){
-	   cout << word << " deleted" << endl;
+
+   if(t->count > 1 && t->count < 10000){
+	   t->count -= 1;
+	   cout << word << " deleted, new count = " << t->count << endl;
    }
    else{
-   	   cout << word << " deleted, new count = " <<  t->count <<endl;
+   	   t->count -= 1;
+	   cout << word << " deleted"<<endl;
    }
 
  
