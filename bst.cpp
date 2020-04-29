@@ -41,7 +41,7 @@ void BST::insert(string word){
 	int c;
 	if(!root){
 		root = new Node(word,1);
-		cout << word << " inserted, new count = 0" << endl;
+		cout << word << " inserted, new count = 1" << endl;
 	}
 	else{
 		c = insertHelper(word,root);
@@ -124,7 +124,7 @@ int BST::searchHelper(string word, Node* n) const{
 		else{
 			searchHelper(word, n->right);
 		}
-	}
+}
 
 
 
