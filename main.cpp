@@ -24,8 +24,8 @@ fstream file;
 string word, filename;
 BST treedata;
 Table tabledata;
-filename = "PA1_dataset.txt";
-//filename = "/autograder/submission/PA1_dataset.txt";
+//filename = "PA1_dataset.txt";
+filename = "/autograder/submission/PA1_dataset.txt";
 file.open(filename.c_str());
 while (file >>word){
 
