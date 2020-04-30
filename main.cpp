@@ -24,8 +24,8 @@ fstream file;
 string word, filename;
 BST treedata;
 Table tabledata;
-filename = "PA1_dataset.txt";
-//filename = "/autograder/submission/PA1_dataset.txt";
+//filename = "PA1_dataset.txt";
+filename = "/autograder/submission/PA1_dataset.txt";
 file.open(filename.c_str());
 while (file >>word){
 
@@ -59,7 +59,7 @@ for (size_t i = 0; i < s.length(); i++) {
 
 string key = s.substr(indexOfSpace+1, s.length()-1);
 treedata.insert(key);
-//tabledata.insert(key);
+tabledata.insert(key);
 }
 
 ////////////////////////////////////////////////////////////
@@ -105,7 +105,7 @@ for (size_t i = 0; i < s.length(); i++) {
 string key = s.substr(indexOfSpace+1, s.length()-1);
 
 treedata.remove(key);
-//tabledata.remove(key);
+tabledata.remove(key);
 }
 
 //////////////////////////////////////////////////////////////////////

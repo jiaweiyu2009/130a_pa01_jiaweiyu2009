@@ -114,8 +114,6 @@ void Table::remove(string word){
 
 void Table::rangeSearch(string a, string b)const{
 	vector<string> v;
-	
-       int j = 0;
       for(int index = 0 ; index < CAPACITY; index++){
        for(auto i : table[index]){
 		if((i.first >= a) && (i.first<= b) && searchHelper(i.first) > 0) {
