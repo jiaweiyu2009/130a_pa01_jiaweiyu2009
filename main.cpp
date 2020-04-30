@@ -120,7 +120,7 @@ for (size_t i = 0; i < s.length(); i++) {
 string key = s.substr(indexOfSpace+1, s.length()-1);
 
 treedata.search(key);
-//tabledata.search(key);
+tabledata.search(key);
 }
 
 ////////////////////////////////////////////////////////////////////////
