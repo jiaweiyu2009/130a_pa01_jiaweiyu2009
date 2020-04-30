@@ -53,7 +53,6 @@ void Table::insert2(string word, bool b){
 
 int Table::searchHelper(string word) const{	
        int index = this->hash(word);
-       int j = 0;
        for(auto i : table[index]){
 		if(i.first == word){
 		return i.second;
@@ -75,30 +74,40 @@ void Table::search(string word) const{
 
 void Table::remove(string word){
 	int s = searchHelper(word);
+	pair<string,size_t>pair8;
+
+
 	if(s == 1){
 	int index = this->hash(word);
-	int j = 0;
-	for (auto i : table[index]){
-		if (i.first == word){
-		table[index].erase(table[index].begin() + j);
-		cout << word << " deleted\n";
+	for(auto i : table[index]){
+		if(i.first == word){
+			pair8.first = i.first;
+			pair8.second = i.second;
 		}
+	}
+
+	for (int sh = 0; sh < table[index].size(); sh++){
+		if((table[index])[sh] == pair8){
+			table[index].erase((table[index]).begin()+ sh);
+			cout << word << " deleted\n";
+	}
 	}
 	}
 
 	else{
 	int index = this->hash(word);
-	int j = 0;
 	for(auto i : table[index]){
-		if (i.first == word){
-			pair<string, size_t> pair1(i.first,i.second - 1);
-			table[index].erase(table[index].begin() + j);
-			table[index].push_back(pair1);
-			cout << word << " deleted, new count = " << pair1.second << endl;
+		if(i.first == word){
+			pair8.first = i.first;
+			pair8.second = i.second;
 		}
-		j++;
 	}
-
+	for(int sh = 0; sh < table[index].size(); sh++){
+		if (((table[index])[sh]) == pair8){
+			((table[index])[sh]).second -= 1;
+			cout << word << " deleted, new count = " << ((table[index])[0].second) << endl;
+}
+}
 }
 }
 
@@ -109,7 +118,7 @@ void Table::rangeSearch(string a, string b)const{
        int j = 0;
       for(int index = 0 ; index < CAPACITY; index++){
        for(auto i : table[index]){
-		if((i.first >= a) && (i.first<= b)) {
+		if((i.first >= a) && (i.first<= b) && searchHelper(i.first) > 0) {
 		v.push_back(i.first);
 		}	
        }		
@@ -121,7 +130,4 @@ void Table::rangeSearch(string a, string b)const{
 	      cout << *it << endl;
       }
 }
-
-
-
 

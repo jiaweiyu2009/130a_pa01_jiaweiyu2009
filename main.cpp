@@ -24,8 +24,8 @@ fstream file;
 string word, filename;
 BST treedata;
 Table tabledata;
-//filename = "PA1_dataset.txt";
-filename = "/autograder/submission/PA1_dataset.txt";
+filename = "PA1_dataset.txt";
+//filename = "/autograder/submission/PA1_dataset.txt";
 file.open(filename.c_str());
 while (file >>word){
 
@@ -59,7 +59,7 @@ for (size_t i = 0; i < s.length(); i++) {
 
 string key = s.substr(indexOfSpace+1, s.length()-1);
 treedata.insert(key);
-tabledata.insert(key);
+//tabledata.insert(key);
 }
 
 ////////////////////////////////////////////////////////////
@@ -67,7 +67,6 @@ else if (s.find("range") != std::string::npos){
 string extracted;
 if(s[0] == 32){
     extracted = s.erase(0,14);
-    cout << extracted << endl;
 }
 else if(s[0] == 114){
      extracted = s.erase(0,13);
@@ -105,8 +104,8 @@ for (size_t i = 0; i < s.length(); i++) {
 }
 string key = s.substr(indexOfSpace+1, s.length()-1);
 
-tabledata.remove(key);
 treedata.remove(key);
+//tabledata.remove(key);
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -121,7 +120,7 @@ for (size_t i = 0; i < s.length(); i++) {
 string key = s.substr(indexOfSpace+1, s.length()-1);
 
 treedata.search(key);
-tabledata.search(key);
+//tabledata.search(key);
 }
 
 ////////////////////////////////////////////////////////////////////////

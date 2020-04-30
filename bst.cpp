@@ -330,19 +330,22 @@ else{
 
 void BST::remove(string word){
 
-int c = searchHelper(word);
+Node* n = getNodeFor(word,root);
 
-   if(c == 1){
-	   Node* n = getNodeFor(word,root);
-	   n->count -= 1;
+{
+   if(n->count == 1){
+	   n->count = 0;
 	   cout << word << " deleted\n";
    }
-   else if(c > 1){
-	   Node*n = getNodeFor(word,root);
+   else if(n->count > 1){
 	   n->count -= 1;
 	   cout << word << " deleted, new count = " << n-> count<<endl;
    }
 }
+
+}
+
+
 	
 
 
@@ -359,21 +362,19 @@ void  BST::rangeSearchHelper(Node* r, string a, string b, vector<string>& v) con
 	if(r == nullptr){
 		v.push_back(" ");
 	}
-	else if(a > r->word){
+	else if(a > r->word && r->count > 0){
 		rangeSearchHelper(r->right,a,b,v);
 	}
-	else if(a <= r->word && b >= r->word){
+	else if(a <= r->word && b >= r->word && r->count > 0){
 		rangeSearchHelper(r->left,a,b,v);
 		cout << r->word<<endl;
 		rangeSearchHelper(r->right,a,b,v);
 	}
 		
 	
-	else if(b < r->word){
+	else if(b < r->word && r->count > 0){
 		rangeSearchHelper(r->left,a,b,v);
 	}
 
 
 }
-
-
