@@ -41,7 +41,7 @@ private:
 	void clear(Node *n); //for destructor
 
 	int insertHelper(string word, Node* n);
-	int searchHelper(string word, Node* n) const;
+	int searchHelper(string word) const;
 	Node* getNodeFor(string value, Node* n) const;
 	Node* minHelper(Node* n) const;
 	Node* maxHelper(Node* n) const;
