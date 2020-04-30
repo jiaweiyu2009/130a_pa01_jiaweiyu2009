@@ -19,6 +19,8 @@ public:
 	void print() const;
 	void rangeSearch(string a, string b)const;
 
+	void search2(string word)const;
+	void printInOrder()const;
 
 //	void  rangeSearch(Node* r, string a, string b) const;
 
@@ -34,6 +36,7 @@ private:
 
 		void printWord(){cout<<this->word;}
 		void printCount(){cout<<this->count;}
+
 	};
 
 	Node* root;
