@@ -105,9 +105,8 @@ for (size_t i = 0; i < s.length(); i++) {
 }
 string key = s.substr(indexOfSpace+1, s.length()-1);
 
-//treedata.remove(key);
-//tabledata.remove(key);
-cout <<"nmsl" <<endl;
+treedata.remove(key);
+tabledata.remove(key);
 }
 
 //////////////////////////////////////////////////////////////////////
