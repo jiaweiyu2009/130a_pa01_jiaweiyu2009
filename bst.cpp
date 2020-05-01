@@ -36,8 +36,17 @@ void BST::printInOrder(Node *n) const {
 }
 }
 
-void BST::printInOrder()const{
-	printInOrder(root);
+void BST::search2(string word)const{
+	Node*n = getNodeFor(word,root);
+	if (n->left){
+		cout<< "left " << n->left->word <<endl;
+	}
+	if(n->right){
+		cout<<"right " << n->right->word <<endl;
+	}
+	if(n->parent){
+		cout<<"parent " << n->parent->word<<endl;
+	}
 }
 
 void BST::insert(string word){
@@ -102,27 +111,55 @@ int BST::insertHelper(string word, Node *n) {
 	       n->right = new Node(word, 1);
 	       n->right->parent = n;
 	       return n->right->count;
+
 	    }
     }
 }
 
-void BST::search(string word) const{
+bool BST::search(string word) const{
 Node* n = getNodeFor(word,root);
-if( n){
-	cout << word << " found, count = " << n->count << endl;
+if( n == nullptr){
+	cout << word << " not found\n";
+	return false;
 }
+
+if( n-> count > 0){
+	cout << word << " found, count = " << n->count  << "\n";
+	return true;
+}
+
 else{
-cout << word << " not found" << endl;
+	cout << word << " not found\n";
+	return false;
 }
 }
 
-int BST::searchHelper(string word) const{
+
+
+bool BST::search3(string word) const{
 Node* n = getNodeFor(word,root);
-if (n){
-		return n->count;	}
-else{
-	return 0;
+if( n == nullptr){
+	return false;
 }
+
+if( n-> count > 0){
+	
+	return true;
+}
+
+else{
+
+	return false;
+}
+}
+
+
+int BST::searchHelper(string word) const{
+	Node* n = getNodeFor(word,root);
+	if (n == nullptr){
+		return 0;
+	}
+	return n->count;
 }
 
 
@@ -243,6 +280,7 @@ bool BST::removeHelper(string value){
 
 Node* t = getNodeFor(value,root);
 
+
 if(t){
 	if(!t->right && !t->left){
 		if(t->parent == nullptr){
@@ -336,10 +374,8 @@ Node* n = getNodeFor(word,root);
 
 {
    if(n->count == 1){
-	   bool b = removeHelper(word);
-	   if (b){
+	   n->count = 0;
 	   cout << word << " deleted\n";
-	   }
    }
    else if(n->count > 1){
 	   n->count -= 1;
@@ -349,19 +385,7 @@ Node* n = getNodeFor(word,root);
 
 }
 
-void BST::search2(string word)const{
-	Node* p = getNodeFor(word,root);
-	if (p->left){
-		cout << "left is " <<  p->left->word<< " " << p->left->count <<endl;
-	}
-	if (p->parent){
-		cout << "parent is " << p->parent->word << " " << p->parent->count <<endl;
-	}
 
-	if (p->right){
-		cout << "right is " <<  p->right->word<< " " << p->right->count <<endl;
-	}
-}
 	
 
 
@@ -378,18 +402,19 @@ void  BST::rangeSearchHelper(Node* r, string a, string b, vector<string>& v) con
 	if(r == nullptr){
 		v.push_back(" ");
 	}
-	
-	else if(a >= r->word && r->count > 0){
+	else if(a >= r->word && (search3(r->word) == true)){
 		rangeSearchHelper(r->right,a,b,v);
 	}
-	else if(a <= r->word && b >= r->word && r->count > 0){
+	else if(a <= r->word && b >= r->word && (search3(r->word) == true)){
 		rangeSearchHelper(r->left,a,b,v);
 		cout << r->word<<endl;
 		rangeSearchHelper(r->right,a,b,v);
 	}
 		
 	
-	else if(b <= r->word && r->count > 0){
+	else if(b < r->word && (search3(r->word) == true)){
 		rangeSearchHelper(r->left,a,b,v);
 	}
+
+
 }

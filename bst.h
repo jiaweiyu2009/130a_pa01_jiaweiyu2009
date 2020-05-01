@@ -12,7 +12,7 @@ public:
 
 	BST();
 	~BST();
-	void search(string word) const;
+	bool search(string word) const;
 	void insert2(string word, bool b);
 	void insert(string word);
 	void remove(string word);
@@ -21,6 +21,7 @@ public:
 
 	void search2(string word)const;
 	void printInOrder()const;
+	bool search3(string word) const;
 
 //	void  rangeSearch(Node* r, string a, string b) const;
 

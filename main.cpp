@@ -59,7 +59,7 @@ for (size_t i = 0; i < s.length(); i++) {
 
 string key = s.substr(indexOfSpace+1, s.length()-1);
 treedata.insert(key);
-//tabledata.insert(key);
+tabledata.insert(key);
 }
 
 ////////////////////////////////////////////////////////////
@@ -72,7 +72,7 @@ else if(s[0] == 114){
      extracted = s.erase(0,13);
 }
 
-cout << extracted <<endl;
+
 string w = " ";
 int indexOfFirstSpace = 0;
 int indexOfLastSpace = 0;
@@ -87,9 +87,9 @@ indexOfFirstSpace = FirstSpace(extracted, w);
 string a = extracted.substr(0, indexOfFirstSpace);
 string b = extracted.substr(indexOfLastSpace+1, extracted.length());
 
-
+cout << "broaching" <<endl;
 treedata.rangeSearch(a,b);
-//tabledata.rangeSearch(a,b);
+tabledata.rangeSearch(a,b);
 
 }
 
@@ -105,7 +105,7 @@ for (size_t i = 0; i < s.length(); i++) {
 string key = s.substr(indexOfSpace+1, s.length()-1);
 
 treedata.remove(key);
-//tabledata.remove(key);
+tabledata.remove(key);
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -118,9 +118,8 @@ for (size_t i = 0; i < s.length(); i++) {
         }
 }
 string key = s.substr(indexOfSpace+1, s.length()-1);
-
 treedata.search(key);
-//tabledata.search(key);
+tabledata.search(key);
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -130,7 +129,6 @@ q.pop();
 
 
 }
-
 
 return 0;
 }
